@@ -1,0 +1,78 @@
+export class Vector {
+  x: number;
+  y: number;
+
+  constructor(x: number = 0, y: number = 0) {
+    this.x = x;
+    this.y = y;
+  }
+
+  add(vector: Vector): Vector {
+    this.x += vector.x;
+    this.y += vector.y;
+    return this;
+  }
+
+  sub(vector: Vector): Vector {
+    this.x -= vector.x;
+    this.y -= vector.y;
+    return this;
+  }
+
+  mult(scalar: number): Vector {
+    this.x *= scalar;
+    this.y *= scalar;
+    return this;
+  }
+
+  div(scalar: number): Vector {
+    if (scalar === 0) {
+      return this;
+    }
+
+    this.x /= scalar;
+    this.y /= scalar;
+    return this;
+  }
+
+  mag(): number {
+    return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
+  }
+
+  limit(scalar: number): Vector {
+    if (this.mag() > scalar) {
+      this.normalize().mult(scalar);
+    }
+    return this;
+  }
+
+  moveTowards(vector: Vector, t: number): Vector {
+    this.add(vector.clone().sub(this).mult(t));
+    return this;
+  }
+
+  dot(vector: Vector): number {
+    return this.x * vector.x + this.y * vector.y;
+  }
+
+  normalize(): Vector {
+    return this.div(this.mag());
+  }
+
+  dist(vector: Vector): number {
+    return this.clone().sub(vector).mag();
+  }
+
+  clone(): Vector {
+    return new Vector(this.x, this.y);
+  }
+
+  floor(): Vector {
+    this.x = Math.floor(this.x);
+    this.y = Math.floor(this.y);
+
+    return this;
+  }
+}
+
+export const createVector = (x = 0, y = 0) => new Vector(x, y);

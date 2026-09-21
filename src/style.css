@@ -1,0 +1,19 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+#app__canvas {
+  height: 600px;
+  width: 600px;
+  border: 2px solid black;
+}

@@ -1,0 +1,17 @@
+{
+  "name": "bouncing-balls",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "format": "oxfmt"
+  },
+  "devDependencies": {
+    "oxfmt": "^0.68.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0"
+  }
+}
