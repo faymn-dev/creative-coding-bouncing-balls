@@ -3,8 +3,8 @@ import { WIDTH, HEIGHT } from "./config";
 import { random } from "./utils";
 
 const PARTICLE_MAX_HP = 20;
-const PARTICLE_LINE_WIDTH = 5;
-const PARTICLE_RADIUS = 15;
+export const PARTICLE_LINE_WIDTH = 8;
+export const PARTICLE_RADIUS = 20;
 
 export class Particle {
   pos = createVector();
@@ -68,12 +68,15 @@ export class Particle {
   }
 
   draw(ctx: CanvasRenderingContext2D) {
+    // default to green
     let foreground = "#00BE00";
     let background = "#63F263";
     if (this.health < PARTICLE_MAX_HP * 0.25) {
+      // red
       foreground = "#BE0000";
       background = "#F26363";
     } else if (this.health < PARTICLE_MAX_HP * 0.75) {
+      // yellow
       foreground = "#BEB800";
       background = "#EFF263";
     }
