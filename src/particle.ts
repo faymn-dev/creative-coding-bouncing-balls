@@ -24,10 +24,22 @@ export class Particle {
   }
 
   update(particles: Particle[]) {
-    if (this.pos.x + PARTICLE_RADIUS > WIDTH || this.pos.x - PARTICLE_RADIUS < 0) {
+    if (this.pos.x + PARTICLE_RADIUS > WIDTH) {
+      this.pos.x = WIDTH - PARTICLE_RADIUS;
       this.vel.x *= -1;
     }
-    if (this.pos.y + PARTICLE_RADIUS > HEIGHT || this.pos.y - PARTICLE_RADIUS < 0) {
+    if (this.pos.x - PARTICLE_RADIUS < 0) {
+      this.pos.x = PARTICLE_RADIUS;
+      this.vel.x *= -1;
+    }
+
+    if (this.pos.y + PARTICLE_RADIUS > HEIGHT) {
+      this.pos.y = HEIGHT - PARTICLE_RADIUS;
+      this.vel.y *= -1;
+    }
+
+    if (this.pos.y - PARTICLE_RADIUS < 0) {
+      this.pos.y = PARTICLE_RADIUS;
       this.vel.y *= -1;
     }
 
